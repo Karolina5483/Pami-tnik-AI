@@ -1,1 +1,134 @@
+/* style.css */
+
+/* Globalne style */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('images/tlo-pamietnika.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+h2, h3, h4, h5 {
+    margin: 0.5rem 0;
+}
+
+.glow-text {
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.8);
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Logo */
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ff69b4;
+    text-shadow: 2px 2px 8px rgba(255, 20, 147, 0.6);
+}
+
+/* Header */
+header {
+    background-color: #f8b3d0;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+nav {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+nav button {
+    background-color: #f8b3d0;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+nav button:hover {
+    background-color: #ff69b4;
+}
+
+/* Main Content */
+main {
+    max-width: 1024px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+h3, h4 {
+    font-size: 1.25rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #f06292;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    resize: none;
+}
+
+/* Image Gallery */
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+#gallery img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Active Tab */
+.tab-content {
+    display: none;
+}
+
+.active-tab {
+    display: block;
+}
+
 
