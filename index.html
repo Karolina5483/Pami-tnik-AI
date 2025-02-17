@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pamiętnik AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('images/tlo-pamietnika.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .tab-content { display: none; }
+        .active-tab { display: block; }
+        .glow-text { text-shadow: 0 0 8px rgba(255, 105, 180, 0.8); }
+        .overlay {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ff69b4;
+            text-shadow: 2px 2px 8px rgba(255, 20, 147, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-pink-100 text-gray-900">
+    <header class="bg-pink-500 text-white p-4 text-center shadow-md">
+        <span class="logo">✨ PAMIĘTNIK AI ✨</span>
+    </header>
+    
+    <nav class="flex justify-between p-4 bg-white shadow-md">
+        <div class="space-x-4">
+            <button class="tab-btn" data-tab="home">🏠 Strona Główna</button>
+            <button class="tab-btn" data-tab="notes">📝 Notatki</button>
+            <button class="tab-btn" data-tab="quotes">🌟 Afirmacje</button>
+            <button class="tab-btn" data-tab="album">📷 Album</button>
+            <button class="tab-btn" data-tab="auth">🔐 Logowanie</button>
+            <button class="tab-btn" data-tab="register">🆕 Rejestracja</button>
+        </div>
+    </nav>
+    
+    <main class="max-w-4xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-lg overlay">
+        <div id="home" class="tab-content active-tab">
+            <h2 class="text-3xl font-semibold mb-4 glow-text text-center">Witaj w Pamiętniku AI! 💖</h2>
+            <p class="text-gray-700 text-lg text-center">
+                <h3 class="text-gray-700 text-lg text-center">Pamiętnik AI : Twój osobisty, wirtualny dziennik</h3>
+<h4 class="text-gray-700 text-lg text-center">Pamiętnik AI to unikalne miejsce, w którym możesz zapisywać swoje myśli, przeżycia i emocje każdego dnia. To nie tylko klasyczny dziennik, ale także inteligentny asystent, który analizuje Twoje wpisy, dostarcza inspirujące afirmacje oraz motywujące cytaty, aby pomóc Ci w codziennym rozwoju i samopoczuciu.</h4>
+<h5 class="text-gray-700 text-lg text-center">Jak działa Pamiętnik AI?</h5>
+🔹 Zapisywanie wspomnień: Każdego dnia możesz dodawać swoje notatki, opisywać emocje, sukcesy, wyzwania czy ważne wydarzenia. Dzięki temu tworzysz swój osobisty, cyfrowy pamiętnik, który pomoże Ci śledzić własny rozwój.
+🔹 Analiza wpisów: AI analizuje Twoje zapiski, rozpoznaje emocje i nastroje, a następnie dostosowuje spersonalizowane sugestie oraz wsparcie. Jeśli masz gorszy dzień, podsunie Ci motywujące słowa lub porady, które pomogą spojrzeć na sytuację z innej perspektywy.
+🔹 Cenne rady i wskazówki: Na podstawie Twoich notatek AI może proponować sposoby radzenia sobie ze stresem, budowania pewności siebie czy poprawy samopoczucia. To tak, jakbyś miał osobistego doradcę, który zawsze jest gotowy Cię wesprzeć.
+🔹 Afirmacje i motywacja: Każdego dnia otrzymasz inspirujące cytaty i afirmacje dostosowane do Twojego aktualnego nastroju. Dzięki temu rozpoczniesz dzień z pozytywną energią i motywacją do działania.
+🔹 Album wspomnień: Możesz dodawać zdjęcia do swoich wpisów, tworząc piękny album wspomnień, który pomoże Ci wracać do najpiękniejszych chwil.
+🔹 Prywatność i bezpieczeństwo: Twoje wpisy są przechowywane bezpiecznie i dostępne tylko dla Ciebie. Możesz mieć pewność, że Twoje myśli pozostaną prywatne.
 
+Dlaczego warto korzystać z Pamiętnika AI?
+✅ Pomaga uporządkować myśli i emocje
+✅ Wspiera rozwój osobisty i poprawia samoświadomość
+✅ Motywuje do działania poprzez inspirujące treści
+✅ Pomaga śledzić swoje postępy i budować pozytywne nawyki
+
+✨ Zapisuj. Analizuj. Rozwijaj się. Pamiętnik AI to nie tylko miejsce na wspomnienia, ale także Twój codzienny przewodnik w drodze do lepszego życia!
+            </p>
+        </div>
+
+        <div id="notes" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">Twoje notatki 📝</h2>
+            <textarea id="noteInput" class="w-full p-2 border rounded-md mb-2" placeholder="Dodaj swoją notatkę..."></textarea>
+            <button class="w-full bg-pink-500 text-white p-2 rounded-md" onclick="addNote()">Dodaj notatkę</button>
+            <ul id="notesList" class="mt-4 space-y-2"></ul>
+        </div>
+        
+        <div id="quotes" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">Codzienne afirmacje 🌟</h2>
+            <p id="affirmation" class="text-center text-lg font-semibold"></p>
+            <button class="w-full bg-pink-500 text-white p-2 rounded-md mt-4" onclick="generateAffirmation()">Generuj afirmację</button>
+        </div>
+        
+        <div id="album" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">Twój album 📸</h2>
+            <input type="file" id="imageUpload" class="mb-4 p-2 border rounded-md">
+            <button class="w-full bg-pink-500 text-white p-2 rounded-md" onclick="addImage()">Dodaj zdjęcie</button>
+            <div id="gallery" class="mt-4 grid grid-cols-2 gap-4"></div>
+        </div>
+
+        <div id="auth" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">🔐 Logowanie</h2>
+            <input type="email" id="loginEmail" class="w-full p-2 border rounded-md mb-2" placeholder="Email">
+            <input type="password" id="loginPassword" class="w-full p-2 border rounded-md mb-2" placeholder="Hasło">
+            <button class="btn" onclick="loginUser()">Zaloguj się</button>
+        </div>
+
+        <div id="register" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">🆕 Rejestracja</h2>
+            <input type="email" id="registerEmail" class="w-full p-2 border rounded-md mb-2" placeholder="Email">
+            <input type="password" id="registerPassword" class="w-full p-2 border rounded-md mb-2" placeholder="Hasło">
+            <button class="btn" onclick="registerUser()">Zarejestruj się</button>
+        </div>
+    </main>
+    
+    <script>
+        document.querySelectorAll(".tab-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active-tab"));
+                document.getElementById(button.getAttribute("data-tab")).classList.add("active-tab");
+            });
+        });
+
+        function addNote() {
+            const noteInput = document.getElementById("noteInput");
+            const notesList = document.getElementById("notesList");
+            const note = document.createElement("li");
+            note.textContent = noteInput.value;
+            notesList.appendChild(note);
+            noteInput.value = "";
+        }
+
+        function generateAffirmation() {
+            const affirmations = [
+                "Jesteś silna i zdolna!",
+                "Każdy dzień to nowa szansa!",
+                "Twoje myśli mają moc!",
+                "Masz w sobie ogromny potencjał!",
+                "Zasługujesz na miłość i szczęście!",
+                "Jesteś wystarczająca taka, jaka jesteś!",
+                "Zmieniasz świat na lepsze!",
+                "Każdy krok do przodu to sukces!",
+                "Wszystko, czego potrzebujesz, masz w sobie!",
+                "Twój uśmiech rozświetla świat!"
+            ];
+            document.getElementById("affirmation").textContent = affirmations[Math.floor(Math.random() * affirmations.length)];
+        }
+    </script>
+</body>
+</html>
